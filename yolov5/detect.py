@@ -31,6 +31,8 @@ from utils.general import (LOGGER, apply_classifier, check_img_size, check_imsho
 from utils.plots import Annotator, colors
 from utils.torch_utils import load_classifier, select_device, time_sync
 
+from util import *
+
 from datetime import datetime
 current_time = datetime.now()
 num = ""
@@ -240,8 +242,11 @@ def run(weights=ROOT / 'yolov5s.pt',  # model.pt path(s)
             
             
             # print("********************" + str(len(pred[0])))
-            global num
-            num = str(len(pred[0]))
+            # global num
+            # num = str(len(pred[0]))
+
+            save_car_info(pred[0], os.getcwd() + "/data/car_info.txt")
+
             # Print time (inference-only)
             # LOGGER.info(f'{s}Done. ({t3 - t2:.3f}s)')
 
